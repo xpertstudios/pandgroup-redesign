@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Phone, MapPin, Clock, Send, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, ArrowUpRight, ExternalLink } from "lucide-react";
 import Clients from "@/components/Clients";
 
 export default function ContactPage() {
@@ -19,59 +19,60 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleMailto = (e: React.FormEvent) => {
+  const handleOpenEmailApp = (e: React.FormEvent) => {
     e.preventDefault();
     const mailSubject = encodeURIComponent(
-      formData.subject || `Inquiry from ${formData.name} via PandGroup Website`
+      formData.subject || `Inquiry from ${formData.name || "Client"} via PandGroup Website`
     );
     const mailBody = encodeURIComponent(
       `Name: ${formData.name}\n` +
       `Email: ${formData.email}\n` +
       `Phone: ${formData.phone || "Not provided"}\n\n` +
-      `Message:\n${formData.message}`
+      `Inquiry / Project Scope:\n${formData.message}`
     );
     window.location.href = `mailto:D.Stephens@pandgroup.com?subject=${mailSubject}&body=${mailBody}`;
   };
 
   return (
-    <div className="pt-28 sm:pt-32 bg-white">
-      {/* Header */}
-      <section className="bg-brand-dark text-white py-16 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="pt-24 sm:pt-28 bg-white">
+      {/* Header Banner */}
+      <section className="bg-brand-navy text-white py-16 sm:py-20 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-brand-sky/15 rounded-full blur-[120px] pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <span className="text-brand-sky font-heading font-semibold text-xs uppercase tracking-widest block mb-3">
             Contact Us
           </span>
           <h1 className="font-heading font-bold text-3xl sm:text-5xl text-white tracking-tight leading-tight max-w-3xl">
             We are here to help optimize your energy systems.
           </h1>
-          <p className="text-brand-gray/80 text-base sm:text-lg max-w-2xl mt-4 leading-relaxed">
-            Reach out directly to Delvin Stephens and the PandGroup advisory team to discuss custom DERMS architecture, grid modernizations, or strategic clean-tech consulting.
+          <p className="text-brand-offwhite/85 text-base sm:text-lg max-w-2xl mt-4 leading-relaxed">
+            Reach out directly to Delvin Stephens and the PandGroup advisory practice to discuss custom DERMS architecture, grid modernizations, or strategic clean-tech consulting.
           </p>
         </div>
       </section>
 
       {/* Main Content & Form */}
-      <section className="py-20 sm:py-28 bg-white text-brand-charcoal">
+      <section className="py-20 sm:py-28 bg-white text-brand-slate">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-12 items-start">
             {/* Contact Details from actual PandGroup site */}
             <div className="lg:col-span-5 space-y-6">
               <div>
                 <span className="text-brand-sky font-heading font-semibold text-xs uppercase tracking-widest block mb-2">
-                  Get in Touch
+                  Direct Inquiries
                 </span>
-                <h2 className="font-heading font-bold text-2xl sm:text-3xl text-brand-dark">
-                  Headquarters &amp; Direct Inquiries
+                <h2 className="font-heading font-bold text-2xl sm:text-3xl text-brand-navy">
+                  Headquarters &amp; Direct Office
                 </h2>
               </div>
 
               <div className="space-y-4 pt-2">
-                <div className="p-6 bg-brand-card rounded-2xl border border-brand-gray flex items-start gap-4 shadow-sm">
+                <div className="p-6 bg-brand-offwhite rounded-2xl border border-brand-border flex items-start gap-4 shadow-sm">
                   <div className="w-10 h-10 rounded-xl bg-brand-sky/15 text-brand-sky flex items-center justify-center shrink-0">
                     <MapPin size={20} />
                   </div>
                   <div>
-                    <h3 className="font-heading font-bold text-sm text-brand-dark uppercase tracking-wider">
+                    <h3 className="font-heading font-bold text-sm text-brand-navy uppercase tracking-wider">
                       Address
                     </h3>
                     <p className="text-sm text-brand-muted mt-1 leading-relaxed">
@@ -81,12 +82,12 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="p-6 bg-brand-card rounded-2xl border border-brand-gray flex items-start gap-4 shadow-sm">
+                <div className="p-6 bg-brand-offwhite rounded-2xl border border-brand-border flex items-start gap-4 shadow-sm">
                   <div className="w-10 h-10 rounded-xl bg-brand-sky/15 text-brand-sky flex items-center justify-center shrink-0">
                     <Mail size={20} />
                   </div>
                   <div>
-                    <h3 className="font-heading font-bold text-sm text-brand-dark uppercase tracking-wider">
+                    <h3 className="font-heading font-bold text-sm text-brand-navy uppercase tracking-wider">
                       Email
                     </h3>
                     <a
@@ -97,19 +98,19 @@ export default function ContactPage() {
                     </a>
                     <a
                       href="mailto:customerservice@pandgroup.com"
-                      className="text-xs text-brand-muted hover:text-brand-dark block mt-0.5"
+                      className="text-xs text-brand-muted hover:text-brand-navy block mt-0.5"
                     >
                       customerservice@pandgroup.com
                     </a>
                   </div>
                 </div>
 
-                <div className="p-6 bg-brand-card rounded-2xl border border-brand-gray flex items-start gap-4 shadow-sm">
+                <div className="p-6 bg-brand-offwhite rounded-2xl border border-brand-border flex items-start gap-4 shadow-sm">
                   <div className="w-10 h-10 rounded-xl bg-brand-sky/15 text-brand-sky flex items-center justify-center shrink-0">
                     <Phone size={20} />
                   </div>
                   <div>
-                    <h3 className="font-heading font-bold text-sm text-brand-dark uppercase tracking-wider">
+                    <h3 className="font-heading font-bold text-sm text-brand-navy uppercase tracking-wider">
                       Phone
                     </h3>
                     <a
@@ -121,12 +122,12 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="p-6 bg-brand-card rounded-2xl border border-brand-gray flex items-start gap-4 shadow-sm">
+                <div className="p-6 bg-brand-offwhite rounded-2xl border border-brand-border flex items-start gap-4 shadow-sm">
                   <div className="w-10 h-10 rounded-xl bg-brand-sky/15 text-brand-sky flex items-center justify-center shrink-0">
                     <Clock size={20} />
                   </div>
                   <div>
-                    <h3 className="font-heading font-bold text-sm text-brand-dark uppercase tracking-wider">
+                    <h3 className="font-heading font-bold text-sm text-brand-navy uppercase tracking-wider">
                       Open Hours
                     </h3>
                     <p className="text-sm text-brand-muted mt-1">
@@ -137,22 +138,22 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Working Form */}
+            {/* Clearly Labeled Open Email App Form */}
             <div className="lg:col-span-7">
-              <div className="bg-brand-card p-8 sm:p-10 rounded-3xl border border-brand-gray shadow-xl">
-                <h3 className="font-heading font-bold text-2xl text-brand-dark mb-2">
-                  Send a Message
+              <div className="bg-brand-offwhite p-8 sm:p-10 rounded-3xl border border-brand-border shadow-lg">
+                <h3 className="font-heading font-bold text-2xl text-brand-navy mb-2">
+                  Prepare Your Advisory Inquiry
                 </h3>
-                <p className="text-xs sm:text-sm text-brand-muted mb-8">
-                  Submitting directly sends an email inquiry to Delvin Stephens and the PandGroup practice.
+                <p className="text-xs sm:text-sm text-brand-muted mb-8 leading-relaxed">
+                  Fill in your project details below to launch a pre-composed message directly in your email client to Delvin Stephens.
                 </p>
 
-                <form onSubmit={handleMailto} className="space-y-5">
+                <form onSubmit={handleOpenEmailApp} className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
                       <label
                         htmlFor="name"
-                        className="block text-xs font-bold text-brand-charcoal uppercase tracking-wider mb-2"
+                        className="block text-xs font-bold text-brand-slate uppercase tracking-wider mb-2"
                       >
                         Your Name *
                       </label>
@@ -163,15 +164,15 @@ export default function ContactPage() {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        placeholder="e.g. John Doe"
-                        className="w-full px-4 py-3 rounded-lg bg-white border border-brand-gray text-brand-dark placeholder-brand-muted/40 text-sm focus:outline-none focus:border-brand-sky min-h-[44px]"
+                        placeholder="e.g. Sarah Jenkins"
+                        className="w-full px-4 py-3 rounded-lg bg-white border border-brand-border text-brand-navy placeholder-brand-muted/40 text-sm focus:outline-none focus:border-brand-sky min-h-[44px]"
                       />
                     </div>
 
                     <div>
                       <label
                         htmlFor="email"
-                        className="block text-xs font-bold text-brand-charcoal uppercase tracking-wider mb-2"
+                        className="block text-xs font-bold text-brand-slate uppercase tracking-wider mb-2"
                       >
                         Your Email *
                       </label>
@@ -182,8 +183,8 @@ export default function ContactPage() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="john@company.com"
-                        className="w-full px-4 py-3 rounded-lg bg-white border border-brand-gray text-brand-dark placeholder-brand-muted/40 text-sm focus:outline-none focus:border-brand-sky min-h-[44px]"
+                        placeholder="sjenkins@company.com"
+                        className="w-full px-4 py-3 rounded-lg bg-white border border-brand-border text-brand-navy placeholder-brand-muted/40 text-sm focus:outline-none focus:border-brand-sky min-h-[44px]"
                       />
                     </div>
                   </div>
@@ -192,7 +193,7 @@ export default function ContactPage() {
                     <div>
                       <label
                         htmlFor="phone"
-                        className="block text-xs font-bold text-brand-charcoal uppercase tracking-wider mb-2"
+                        className="block text-xs font-bold text-brand-slate uppercase tracking-wider mb-2"
                       >
                         Phone Number
                       </label>
@@ -203,14 +204,14 @@ export default function ContactPage() {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="(347) 000-0000"
-                        className="w-full px-4 py-3 rounded-lg bg-white border border-brand-gray text-brand-dark placeholder-brand-muted/40 text-sm focus:outline-none focus:border-brand-sky min-h-[44px]"
+                        className="w-full px-4 py-3 rounded-lg bg-white border border-brand-border text-brand-navy placeholder-brand-muted/40 text-sm focus:outline-none focus:border-brand-sky min-h-[44px]"
                       />
                     </div>
 
                     <div>
                       <label
                         htmlFor="subject"
-                        className="block text-xs font-bold text-brand-charcoal uppercase tracking-wider mb-2"
+                        className="block text-xs font-bold text-brand-slate uppercase tracking-wider mb-2"
                       >
                         Subject
                       </label>
@@ -220,8 +221,8 @@ export default function ContactPage() {
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        placeholder="DERMS Consultation"
-                        className="w-full px-4 py-3 rounded-lg bg-white border border-brand-gray text-brand-dark placeholder-brand-muted/40 text-sm focus:outline-none focus:border-brand-sky min-h-[44px]"
+                        placeholder="DERMS Project Consultation"
+                        className="w-full px-4 py-3 rounded-lg bg-white border border-brand-border text-brand-navy placeholder-brand-muted/40 text-sm focus:outline-none focus:border-brand-sky min-h-[44px]"
                       />
                     </div>
                   </div>
@@ -229,9 +230,9 @@ export default function ContactPage() {
                   <div>
                     <label
                       htmlFor="message"
-                      className="block text-xs font-bold text-brand-charcoal uppercase tracking-wider mb-2"
+                      className="block text-xs font-bold text-brand-slate uppercase tracking-wider mb-2"
                     >
-                      Message *
+                      Project Scope &amp; Needs *
                     </label>
                     <textarea
                       id="message"
@@ -240,19 +241,24 @@ export default function ContactPage() {
                       required
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Tell us about your energy project, microgrid specifications, or regulatory advisory needs..."
-                      className="w-full px-4 py-3 rounded-lg bg-white border border-brand-gray text-brand-dark placeholder-brand-muted/40 text-sm focus:outline-none focus:border-brand-sky resize-none"
+                      placeholder="Describe your current grid architecture, interconnection goals, or upcoming clean-tech milestones..."
+                      className="w-full px-4 py-3 rounded-lg bg-white border border-brand-border text-brand-navy placeholder-brand-muted/40 text-sm focus:outline-none focus:border-brand-sky resize-none"
                     />
                   </div>
 
-                  <button
-                    type="submit"
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-sky hover:bg-brand-sky/90 text-white font-heading font-bold text-xs uppercase tracking-wider px-8 py-4 rounded-md transition-all shadow-md min-h-[48px]"
-                  >
-                    <Send size={16} />
-                    <span>Submit Message</span>
-                    <ArrowUpRight size={16} />
-                  </button>
+                  <div>
+                    <button
+                      type="submit"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-sky hover:bg-brand-skyhover text-white font-heading font-bold text-xs uppercase tracking-wider px-8 py-4 rounded-md transition-all shadow-md min-h-[48px]"
+                    >
+                      <ExternalLink size={16} />
+                      <span>Open in Email App &rarr;</span>
+                      <ArrowUpRight size={16} />
+                    </button>
+                    <p className="text-[11px] text-brand-muted mt-3">
+                      Opens your default email client addressed to D.Stephens@pandgroup.com.
+                    </p>
+                  </div>
                 </form>
               </div>
             </div>
@@ -265,4 +271,3 @@ export default function ContactPage() {
     </div>
   );
 }
-

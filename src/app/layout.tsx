@@ -4,16 +4,17 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 
 export const viewport: Viewport = {
-  themeColor: "#64BBE3",
+  themeColor: "#142433",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
 };
 
 export const metadata: Metadata = {
-  title: "PandGroup — DERMS, Microgrids & Grid Modernization Advisory",
+  metadataBase: new URL("https://pandgroup-redesign.vercel.app"),
+  title: "PandGroup — Clean Energy & DERMS Technology Advisory",
   description:
-    "At Pandgroup, we specialize in crafting tailor-made DERMS solutions that optimize grid stability, enhance energy reliability, and empower the seamless integration of renewable resources.",
+    "PandGroup is an independent energy consultancy specializing in Distributed Energy Resource Management Systems (DERMS), DRMS, microgrid feasibility, and clean-tech strategy. Based in New York.",
   keywords: [
     "DERMS",
     "DRMS",
@@ -25,13 +26,27 @@ export const metadata: Metadata = {
     "New York Energy Consulting",
   ],
   authors: [{ name: "PandGroup LLC" }],
+  robots: {
+    index: false,
+    follow: false,
+  },
+  icons: {
+    icon: "/images/pandgroup-logo-light.png",
+  },
   openGraph: {
-    title: "PandGroup — Tailor-made DERMS Solutions for an Evolving Grid",
+    title: "PandGroup — A Smarter Grid Starts with Clearer Thinking",
     description:
-      "At Pandgroup, we specialize in crafting tailor-made DERMS solutions that optimize grid stability, enhance energy reliability, and empower the seamless integration of renewable resources.",
+      "Expert DERMS solutions, microgrid engineering, and strategic clean-tech advisement for utilities and energy operators.",
     type: "website",
-    url: "https://pandgroup.com",
     locale: "en_US",
+    images: [
+      {
+        url: "/images/Rectangle-19.png",
+        width: 1200,
+        height: 630,
+        alt: "PandGroup Clean Energy Systems",
+      },
+    ],
   },
 };
 
@@ -47,11 +62,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="font-body bg-white text-brand-charcoal antialiased overflow-x-hidden min-h-screen flex flex-col justify-between">
+      <body className="font-body bg-white text-brand-slate antialiased overflow-x-hidden min-h-screen flex flex-col justify-between">
         <Navbar />
         <main className="flex-grow">
           {children}

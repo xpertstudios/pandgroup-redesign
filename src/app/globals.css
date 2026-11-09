@@ -3,13 +3,12 @@
 @tailwind utilities;
 
 :root {
+  --color-brand-navy: #142433;
   --color-brand-sky: #64BBE3;
-  --color-brand-teal: #09AEB8;
-  --color-brand-gold: #FFD763;
-  --color-brand-dark: #1A2530;
-  --color-brand-charcoal: #3A3A3A;
-  --color-brand-muted: #4B4F58;
-  --color-brand-gray: #F1F1F1;
+  --color-brand-purple: #7B3FA1;
+  --color-brand-offwhite: #F8FAFC;
+  --color-brand-slate: #344454;
+  --color-brand-muted: #5B6C7D;
 }
 
 html {
@@ -18,8 +17,8 @@ html {
 }
 
 body {
-  font-family: var(--font-body), 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  color: #3A3A3A;
+  font-family: var(--font-body), "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #344454;
   background-color: #FFFFFF;
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
@@ -47,14 +46,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #F1F1F1;
+  background: #F8FAFC;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #64BBE3;
+  background: #CBD5E1;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #09AEB8;
+  background: #64BBE3;
 }

@@ -4,29 +4,30 @@ import { ArrowUp, Phone, Mail, MapPin, Clock } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-dark text-white border-t border-brand-gray/20 pt-16 pb-12">
+    <footer className="bg-brand-navydark text-white border-t border-brand-navy pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-16 border-b border-white/10">
           {/* Brand & Overview */}
           <div className="lg:col-span-5 space-y-4">
+            {/* Transparent dark-variant logo with original purple/blue icon and white text */}
             <Link href="/" className="inline-block relative w-48 h-12">
               <Image
-                src="/images/Pandgroup-Logo-1.webp"
-                alt="PandGroup"
+                src="/images/pandgroup-logo-dark.png"
+                alt="PandGroup Energy Advisory"
                 fill
                 sizes="192px"
-                className="object-contain object-left brightness-0 invert"
+                className="object-contain object-left"
               />
             </Link>
-            <p className="text-sm text-brand-gray/80 max-w-sm leading-relaxed">
-              Pandgroup specializes in crafting tailor-made DERMS solutions designed to optimize grid stability, enhance energy reliability, and facilitate the integration of renewable energy resources.
+            <p className="text-sm text-brand-offwhite/75 max-w-sm leading-relaxed">
+              Pandgroup specializes in crafting tailor-made DERMS solutions designed to optimize grid stability, enhance energy reliability, and facilitate the seamless integration of renewable resources.
             </p>
             <div className="pt-2">
               <Link
                 href="/derms-ebook"
-                className="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-wider text-brand-gold hover:text-brand-gold/80 transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-heading font-semibold text-brand-sky hover:text-white transition-colors"
               >
-                <span>&rarr; Download Free DERMS Whitepaper</span>
+                <span>&rarr; Download Free DERMS Guide (PDF)</span>
               </Link>
             </div>
           </div>
@@ -36,7 +37,7 @@ export default function Footer() {
             <h4 className="font-heading font-bold text-xs uppercase tracking-widest text-brand-sky">
               Navigation
             </h4>
-            <ul className="space-y-2.5 text-sm text-brand-gray/80">
+            <ul className="space-y-2.5 text-sm text-brand-offwhite/80">
               <li>
                 <Link href="/" className="hover:text-brand-sky transition-colors">
                   Home
@@ -75,7 +76,7 @@ export default function Footer() {
             <h4 className="font-heading font-bold text-xs uppercase tracking-widest text-brand-sky">
               Headquarters
             </h4>
-            <div className="space-y-3 text-sm text-brand-gray/80">
+            <div className="space-y-3 text-sm text-brand-offwhite/80">
               <div className="flex items-start gap-3">
                 <MapPin size={17} className="text-brand-sky shrink-0 mt-0.5" />
                 <span>
@@ -98,7 +99,7 @@ export default function Footer() {
                   href="tel:347-450-3798"
                   className="hover:text-brand-sky transition-colors font-medium"
                 >
-                  347-450-3798
+                  (347) 450-3798
                 </a>
               </div>
               <div className="flex items-center gap-3">
@@ -110,20 +111,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom Sub-footer */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-gray/60">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-offwhite/60">
           <p>
             Copyright &copy; 2026 PandGroup LLC. All rights reserved.
           </p>
 
           <div className="flex items-center gap-6">
-            <a
-              href="https://pandgroup.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-brand-sky transition-colors"
-            >
-              Original WordPress Site (pandgroup.com)
-            </a>
             <a
               href="#"
               className="inline-flex items-center gap-1.5 hover:text-brand-sky transition-colors min-h-[44px]"

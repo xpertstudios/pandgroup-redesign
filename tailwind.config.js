@@ -8,22 +8,23 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // PandGroup original brand color system
         brand: {
-          sky: "#64BBE3",        // Main signature blue from Elementor buttons/accents
-          teal: "#09AEB8",       // Primary Astra palette color 0
-          gold: "#FFD763",       // Astra palette color 1 (accent amber)
-          dark: "#1A2530",       // Deep slate navy for headers and dark surfaces
-          charcoal: "#3A3A3A",   // Body dark neutral (Astra color 2)
-          muted: "#4B4F58",      // Secondary text (Astra color 3)
-          gray: "#F1F1F1",       // Light background (Astra color 4)
-          card: "#F8FAFB",       // Subtle card surface (Astra color 6)
-          light: "#FFFFFF",
+          navy: "#142433",       // Primary Deep Navy
+          navydark: "#0D1822",   // Ultra-deep background
+          sky: "#64BBE3",        // Signature Light Blue
+          skyhover: "#4FAAD5",   // Darker sky blue on hover
+          purple: "#7B3FA1",     // Refined Purple accent
+          purplelight: "#9A5EC0",
+          offwhite: "#F8FAFC",   // Warm off-white
+          slate: "#344454",      // Dark Slate body text
+          muted: "#5B6C7D",      // Muted slate secondary text
+          border: "#E2E8F0",     // Clean border
+          card: "#FFFFFF",
         },
       },
       fontFamily: {
-        heading: ["var(--font-heading)", "Josefin Sans", "Space Grotesk", "sans-serif"],
-        body: ["var(--font-body)", "Open Sans", "Inter", "sans-serif"],
+        heading: ["var(--font-heading)", "Space Grotesk", "sans-serif"],
+        body: ["var(--font-body)", "Inter", "-apple-system", "sans-serif"],
       },
     },
   },
