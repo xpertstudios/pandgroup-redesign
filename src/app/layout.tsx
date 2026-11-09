@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 export const viewport: Viewport = {
-  themeColor: "#101E23",
+  themeColor: "#64BBE3",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -11,7 +13,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "PandGroup — DERMS, Microgrids & Grid Modernization Advisory",
   description:
-    "Independent energy advisory firm specializing in Distributed Energy Resource Management Systems (DERMS), DRMS, microgrid feasibility, and clean-tech strategy. Based in New York.",
+    "At Pandgroup, we specialize in crafting tailor-made DERMS solutions that optimize grid stability, enhance energy reliability, and empower the seamless integration of renewable resources.",
   keywords: [
     "DERMS",
     "DRMS",
@@ -24,9 +26,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "PandGroup LLC" }],
   openGraph: {
-    title: "PandGroup — A Smarter Grid Starts with Clearer Thinking",
+    title: "PandGroup — Tailor-made DERMS Solutions for an Evolving Grid",
     description:
-      "Independent clean-energy consultancy guiding utilities, municipal stakeholders, and clean-tech developers through DERMS architecture and regulatory modernization.",
+      "At Pandgroup, we specialize in crafting tailor-made DERMS solutions that optimize grid stability, enhance energy reliability, and empower the seamless integration of renewable resources.",
     type: "website",
     url: "https://pandgroup.com",
     locale: "en_US",
@@ -45,12 +47,16 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="font-body bg-sand text-pine antialiased overflow-x-hidden">
-        {children}
+      <body className="font-body bg-white text-brand-charcoal antialiased overflow-x-hidden min-h-screen flex flex-col justify-between">
+        <Navbar />
+        <main className="flex-grow">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
