@@ -1,147 +1,124 @@
-"use client";
-
-import { useEffect, useRef } from "react";
 import Image from "next/image";
-import {
-  Network,
-  LineChart,
-  Shield,
-  Lightbulb,
-  ArrowRight,
-} from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
-const services = [
+const SERVICES = [
   {
-    icon: <Network size={28} />,
-    title: "DERMS Consulting & Design",
+    number: "01",
+    title: "DERMS & DRMS Architecture & Design",
     description:
-      "Crafting tailor-made Distributed Energy Resource Management System solutions to optimize grid stability, enhance energy reliability, and integrate renewable resources.",
+      "Crafting tailor-made DERMS solutions that optimize grid reliability, enable bidirectional energy flow, and streamline the integration of distributed generation, battery storage, and solar assets.",
     image: "/images/Rectangle-19.png",
-    tags: ["Utility Integrations", "Microgrids", "VPP"],
+    imageAlt: "Electrical grid engineering and distributed energy resource infrastructure",
+    bullets: [
+      "Custom DERMS / DRMS functional specifications",
+      "Utility ADMS & SCADA integration roadmap",
+      "IEC CIM 61968 semantic data modeling",
+      "Demand response program architecture",
+    ],
   },
   {
-    icon: <LineChart size={28} />,
-    title: "Strategic Advisement",
+    number: "02",
+    title: "Strategic Advisement & Clean-Tech Strategy",
     description:
-      "Developing long-term strategies to achieve renewable technology and carbon-neutrality goals. Expert guidance through financial, operational, and regulatory landscapes.",
+      "Advising utilities, municipal leaders, and clean-tech developers on high-stakes technology decisions, build-vs-buy software trade-offs, and multi-year decarbonization roadmaps.",
     image: "/images/Rectangle-20.png",
-    tags: ["FERC 2222", "Build vs. Buy", "Scalability"],
+    imageAlt: "Clean energy strategy, grid planning, and technological modernization",
+    bullets: [
+      "Rigorous build vs. buy evaluation matrices",
+      "FERC Order 2222 compliance & market design",
+      "Microgrid feasibility and BESS sizing",
+      "Capex / Opex financial modeling for clean tech",
+    ],
   },
   {
-    icon: <Lightbulb size={28} />,
-    title: "Renewable Services Marketing",
+    number: "03",
+    title: "Renewable Services Marketing & Adoption",
     description:
-      "Creating go-to-market strategies that promote sustainable energy sources and encourage adoption of solar, wind, and hydropower solutions across all sectors.",
+      "Formulating market entry, commercialization, and adoption frameworks to accelerate the deployment of clean energy systems across commercial, industrial, and municipal sectors.",
     image: "/images/Rectangle-21.png",
-    tags: ["Solar", "Wind", "Hydropower"],
-  },
-  {
-    icon: <Shield size={28} />,
-    title: "Technology & Industry Consultation",
-    description:
-      "Keeping clients current on cutting-edge technologies, data analytics, and best practices. Navigating regulatory transitions like CLCPA and regional compliance.",
-    image: "/images/Rectangle-19.png",
-    tags: ["Data Analytics", "CLCPA", "Compliance"],
+    imageAlt: "Renewable clean tech marketing, solar adoption, and urban sustainability projects",
+    bullets: [
+      "Go-to-market strategies for DER developers",
+      "Regional compliance alignment (NY CLCPA)",
+      "Stakeholder engagement for urban clean tech",
+      "Commercial tariff & incentive structuring",
+    ],
   },
 ];
 
 export default function Services() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const elements = sectionRef.current?.querySelectorAll(".reveal");
-    elements?.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section
-      id="services"
-      ref={sectionRef}
-      className="py-24 md:py-32 bg-white"
-    >
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Section header */}
-        <div className="reveal text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block text-gold font-semibold text-sm tracking-widest uppercase mb-4">
-            Our Expertise
+    <section id="services" className="py-20 sm:py-28 lg:py-36 bg-sand-light text-pine border-t border-sand-dark">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="max-w-3xl mb-16 sm:mb-20">
+          <span className="text-sage-dark font-mono text-xs uppercase tracking-widest font-semibold block mb-3">
+            Core Service Offerings
           </span>
-          <h2 className="font-[var(--font-heading)] text-3xl md:text-5xl font-bold text-midnight mb-6">
-            Comprehensive Energy Solutions
+          <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-pine tracking-tight leading-tight">
+            Consulting capabilities tailored for a distributed power grid.
           </h2>
-          <p className="text-slate text-lg leading-relaxed">
-            From DERMS architecture to regulatory compliance, we provide
-            end-to-end consulting for organizations navigating the clean energy
-            transition.
+          <p className="text-base sm:text-lg text-sage-dark mt-4 leading-relaxed">
+            Every engagement delivers clear engineering rigor, vendor-neutral roadmaps, and actionable operational blueprints.
           </p>
         </div>
 
-        {/* Services grid */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className={`reveal reveal-delay-${index + 1} group relative bg-ivory rounded-2xl overflow-hidden border border-slate-light/20 hover:border-gold/30 transition-all duration-500 hover:shadow-xl hover:shadow-gold/5`}
+        {/* 3-Column Service Cards with original images */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {SERVICES.map((svc) => (
+            <article
+              key={svc.number}
+              className="bg-sand rounded-3xl overflow-hidden border border-sand-dark hover:border-pine/30 transition-all duration-300 flex flex-col group hover:shadow-xl hover:shadow-pine/5"
             >
-              {/* Image */}
-              <div className="relative h-52 overflow-hidden">
+              {/* Image Frame */}
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-pine-light">
                 <Image
-                  src={service.image}
-                  alt={service.title}
+                  src={svc.image}
+                  alt={svc.imageAlt}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-midnight/80 to-transparent" />
-                <div className="absolute bottom-4 left-6 flex gap-2">
-                  {service.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-pine/60 via-transparent to-transparent opacity-60" />
+                <span className="absolute top-4 left-4 bg-sand/90 backdrop-blur-md text-pine font-mono font-bold text-xs px-3 py-1 rounded-full border border-sand-dark">
+                  {svc.number}
+                </span>
               </div>
 
-              {/* Content */}
-              <div className="p-6 md:p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-gold/10 text-gold flex items-center justify-center group-hover:bg-gold group-hover:text-midnight transition-all duration-300">
-                    {service.icon}
-                  </div>
-                  <h3 className="font-[var(--font-heading)] text-xl font-semibold text-midnight">
-                    {service.title}
-                  </h3>
-                </div>
-                <p className="text-slate leading-relaxed mb-6">
-                  {service.description}
+              {/* Content Body */}
+              <div className="p-6 sm:p-8 flex flex-col flex-1">
+                <h3 className="font-heading font-bold text-xl sm:text-2xl text-pine mb-4 group-hover:text-pine-light transition-colors leading-snug">
+                  {svc.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-sage-dark leading-relaxed mb-6">
+                  {svc.description}
                 </p>
+
+                {/* Bullets */}
+                <div className="pt-4 border-t border-sand-dark mt-auto space-y-2 mb-6">
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-sage-dark font-semibold block mb-2">
+                    Key Deliverables
+                  </span>
+                  {svc.bullets.map((b, i) => (
+                    <div key={i} className="flex items-start gap-2 text-xs text-pine/80">
+                      <span className="w-1.5 h-1.5 rounded-full bg-pine mt-1.5 shrink-0" aria-hidden="true" />
+                      <span>{b}</span>
+                    </div>
+                  ))}
+                </div>
+
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 text-gold font-medium text-sm group-hover:gap-3 transition-all duration-300"
+                  className="inline-flex items-center justify-between text-xs font-heading font-bold uppercase tracking-wider text-pine group-hover:text-pine-light pt-2"
                 >
-                  Learn More
-                  <ArrowRight size={16} />
+                  <span>Discuss Requirements</span>
+                  <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden="true" />
                 </a>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
     </section>
   );
 }
-

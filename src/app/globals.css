@@ -1,118 +1,50 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-  --color-midnight: #0F1A2E;
-  --color-midnight-light: #1a2a45;
-  --color-forest: #1B3A2D;
-  --color-forest-light: #2d5e49;
-  --color-gold: #D4A843;
-  --color-gold-light: #e8c56e;
-  --color-ivory: #F8F7F4;
-  --color-slate: #6B7280;
-  --color-slate-light: #9CA3AF;
-
-  --font-heading: 'Space Grotesk', sans-serif;
-  --font-body: 'Inter', sans-serif;
+:root {
+  --color-pine: #101E23;
+  --color-pine-deep: #0B1519;
+  --color-lime: #C9F36A;
+  --color-sand: #F4F3EB;
+  --color-sage: #7E8E89;
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light dark;
 }
 
 body {
-  font-family: var(--font-body);
-  color: var(--color-midnight);
-  background-color: var(--color-ivory);
+  font-family: var(--font-body), "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #101E23;
+  background-color: #F4F3EB;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Utility animations */
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid #C9F36A;
+  outline-offset: 3px;
 }
 
-@keyframes count-up {
-  from { opacity: 0; transform: scale(0.8); }
-  to { opacity: 1; transform: scale(1); }
+/* Subtle grid backdrop for hero */
+.grid-pattern {
+  background-image: radial-gradient(rgba(201, 243, 106, 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.8; }
-}
-
-@keyframes slide-in-left {
-  from { opacity: 0; transform: translateX(-40px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes slide-in-right {
-  from { opacity: 0; transform: translateX(40px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes grid-line {
-  0% { stroke-dashoffset: 1000; }
-  100% { stroke-dashoffset: 0; }
-}
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.8s ease-out forwards;
-}
-
-.animate-fade-in {
-  animation: fade-in 0.6s ease-out forwards;
-}
-
-.animate-slide-in-left {
-  animation: slide-in-left 0.8s ease-out forwards;
-}
-
-.animate-slide-in-right {
-  animation: slide-in-right 0.8s ease-out forwards;
-}
-
-.animation-delay-200 { animation-delay: 0.2s; }
-.animation-delay-400 { animation-delay: 0.4s; }
-.animation-delay-600 { animation-delay: 0.6s; }
-.animation-delay-800 { animation-delay: 0.8s; }
-
-/* Intersection Observer reveal classes */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
-
-/* Grid visualization */
-.grid-node {
-  animation: pulse-glow 3s ease-in-out infinite;
-}
-
-.grid-node:nth-child(2n) { animation-delay: 0.5s; }
-.grid-node:nth-child(3n) { animation-delay: 1s; }
-.grid-node:nth-child(4n) { animation-delay: 1.5s; }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
@@ -120,14 +52,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-ivory);
+  background: #101E23;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-slate-light);
+  background: #1E353E;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-slate);
+  background: #C9F36A;
 }

@@ -1,24 +1,35 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+export const viewport: Viewport = {
+  themeColor: "#101E23",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
-  title: "PandGroup — Clean Energy Consulting & DERMS Solutions",
+  title: "PandGroup — DERMS, Microgrids & Grid Modernization Advisory",
   description:
-    "PandGroup is a leading clean energy consultancy specializing in DERMS architecture, grid modernization, and renewable energy strategy. Based in New York.",
+    "Independent energy advisory firm specializing in Distributed Energy Resource Management Systems (DERMS), DRMS, microgrid feasibility, and clean-tech strategy. Based in New York.",
   keywords: [
     "DERMS",
-    "clean energy",
-    "grid modernization",
-    "energy consulting",
-    "renewable energy",
-    "New York",
+    "DRMS",
+    "Microgrids",
+    "Virtual Power Plants",
+    "FERC 2222",
+    "Grid Modernization",
+    "Clean Tech Advisory",
+    "New York Energy Consulting",
   ],
+  authors: [{ name: "PandGroup LLC" }],
   openGraph: {
-    title: "PandGroup — Clean Energy Consulting & DERMS Solutions",
+    title: "PandGroup — A Smarter Grid Starts with Clearer Thinking",
     description:
-      "Expert energy consultancy specializing in DERMS, grid modernization, and clean-tech strategy.",
+      "Independent clean-energy consultancy guiding utilities, municipal stakeholders, and clean-tech developers through DERMS architecture and regulatory modernization.",
     type: "website",
     url: "https://pandgroup.com",
+    locale: "en_US",
   },
 };
 
@@ -32,12 +43,13 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased">
+      <body className="font-body bg-sand text-pine antialiased overflow-x-hidden">
         {children}
       </body>
     </html>

@@ -1,266 +1,115 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import { ArrowRight, ChevronDown } from "lucide-react";
-
-function EnergyGridSVG() {
-  return (
-    <svg
-      viewBox="0 0 500 400"
-      className="w-full h-full"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {/* Grid lines */}
-      <defs>
-        <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#D4A843" stopOpacity="0.1" />
-          <stop offset="50%" stopColor="#D4A843" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#D4A843" stopOpacity="0.1" />
-        </linearGradient>
-        <linearGradient id="lineGradV" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#2d5e49" stopOpacity="0.1" />
-          <stop offset="50%" stopColor="#2d5e49" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#2d5e49" stopOpacity="0.1" />
-        </linearGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-          <feMerge>
-            <feMergeNode in="coloredBlur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-
-      {/* Horizontal grid lines */}
-      {[80, 160, 240, 320].map((y, i) => (
-        <line
-          key={`h-${i}`}
-          x1="20"
-          y1={y}
-          x2="480"
-          y2={y}
-          stroke="url(#lineGrad)"
-          strokeWidth="1"
-          opacity="0.3"
-        />
-      ))}
-
-      {/* Vertical grid lines */}
-      {[80, 170, 260, 340, 420].map((x, i) => (
-        <line
-          key={`v-${i}`}
-          x1={x}
-          y1="20"
-          x2={x}
-          y2="380"
-          stroke="url(#lineGradV)"
-          strokeWidth="1"
-          opacity="0.3"
-        />
-      ))}
-
-      {/* Connection lines */}
-      <path
-        d="M 80 80 L 170 160 L 260 120 L 340 200 L 420 160"
-        fill="none"
-        stroke="#D4A843"
-        strokeWidth="2"
-        opacity="0.6"
-        strokeDasharray="8 4"
-      >
-        <animate
-          attributeName="stroke-dashoffset"
-          from="100"
-          to="0"
-          dur="3s"
-          repeatCount="indefinite"
-        />
-      </path>
-
-      <path
-        d="M 80 240 L 170 200 L 260 280 L 340 240 L 420 300"
-        fill="none"
-        stroke="#2d5e49"
-        strokeWidth="2"
-        opacity="0.5"
-        strokeDasharray="8 4"
-      >
-        <animate
-          attributeName="stroke-dashoffset"
-          from="0"
-          to="100"
-          dur="4s"
-          repeatCount="indefinite"
-        />
-      </path>
-
-      {/* Energy nodes */}
-      {[
-        { cx: 80, cy: 80, label: "Solar", color: "#D4A843" },
-        { cx: 170, cy: 160, label: "BESS", color: "#2d5e49" },
-        { cx: 260, cy: 120, label: "Wind", color: "#D4A843" },
-        { cx: 340, cy: 200, label: "DERMS", color: "#D4A843" },
-        { cx: 420, cy: 160, label: "Grid", color: "#2d5e49" },
-        { cx: 80, cy: 240, label: "EV", color: "#2d5e49" },
-        { cx: 170, cy: 200, label: "DER", color: "#D4A843" },
-        { cx: 260, cy: 280, label: "Micro", color: "#2d5e49" },
-        { cx: 340, cy: 240, label: "VPP", color: "#D4A843" },
-        { cx: 420, cy: 300, label: "Load", color: "#2d5e49" },
-      ].map((node, i) => (
-        <g key={i} className="grid-node" filter="url(#glow)">
-          <circle
-            cx={node.cx}
-            cy={node.cy}
-            r="18"
-            fill={node.color}
-            opacity="0.15"
-          />
-          <circle cx={node.cx} cy={node.cy} r="8" fill={node.color} opacity="0.7" />
-          <circle cx={node.cx} cy={node.cy} r="4" fill="white" opacity="0.9" />
-          <text
-            x={node.cx}
-            y={node.cy + 32}
-            textAnchor="middle"
-            fill="white"
-            opacity="0.5"
-            fontSize="10"
-            fontFamily="var(--font-heading)"
-          >
-            {node.label}
-          </text>
-        </g>
-      ))}
-
-      {/* Central hub highlight */}
-      <circle cx="260" cy="200" r="40" fill="#D4A843" opacity="0.05">
-        <animate
-          attributeName="r"
-          values="35;50;35"
-          dur="4s"
-          repeatCount="indefinite"
-        />
-        <animate
-          attributeName="opacity"
-          values="0.05;0.12;0.05"
-          dur="4s"
-          repeatCount="indefinite"
-        />
-      </circle>
-    </svg>
-  );
-}
+import Image from "next/image";
+import { ArrowUpRight, ShieldCheck, Zap } from "lucide-react";
 
 export default function Hero() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    // Reveal on load
-    const elements = sectionRef.current?.querySelectorAll(".hero-reveal");
-    elements?.forEach((el, i) => {
-      setTimeout(() => {
-        el.classList.add("visible");
-      }, 200 + i * 150);
-    });
-  }, []);
-
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-screen bg-midnight overflow-hidden flex items-center"
-    >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-midnight via-midnight-light to-forest opacity-80" />
+    <section className="relative bg-pine text-sand pt-28 sm:pt-36 lg:pt-40 pb-16 sm:pb-24 lg:pb-32 overflow-hidden">
+      {/* Background radial glow & grid pattern */}
+      <div className="absolute inset-0 grid-pattern opacity-60 pointer-events-none" />
+      <div className="absolute -top-40 right-0 w-[500px] h-[500px] bg-lime/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute -bottom-40 left-0 w-[450px] h-[450px] bg-pine-light/60 rounded-full blur-[120px] pointer-events-none" />
 
-      {/* Subtle grid pattern overlay */}
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(212,168,67,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(212,168,67,0.3) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-0 grid md:grid-cols-2 gap-12 items-center w-full">
-        {/* Left — Text content */}
-        <div className="space-y-8">
-          <div className="hero-reveal reveal">
-            <span className="inline-block bg-forest/30 text-gold border border-forest-light/30 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase">
-              DERMS Architecture & Strategy
-            </span>
-          </div>
-
-          <h1 className="hero-reveal reveal font-[var(--font-heading)] text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-            Powering the{" "}
-            <span className="text-gold">next generation</span> of energy
-            infrastructure
-          </h1>
-
-          <p className="hero-reveal reveal text-white/60 text-lg md:text-xl leading-relaxed max-w-xl">
-            We design tailor-made DERMS solutions that optimize grid stability,
-            reduce costs by up to 30%, and accelerate your transition to clean
-            energy.
-          </p>
-
-          <div className="hero-reveal reveal flex flex-col sm:flex-row gap-4">
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center gap-2 bg-gold text-midnight px-7 py-3.5 rounded-lg font-semibold hover:bg-gold-light transition-all duration-200 hover:shadow-lg hover:shadow-gold/20 group"
-            >
-              Request a Proposal
-              <ArrowRight
-                size={18}
-                className="group-hover:translate-x-1 transition-transform"
-              />
-            </a>
-            <a
-              href="#projects"
-              className="inline-flex items-center justify-center gap-2 border border-white/20 text-white px-7 py-3.5 rounded-lg font-semibold hover:border-gold/50 hover:text-gold transition-all duration-200"
-            >
-              Explore Case Studies
-            </a>
-          </div>
-
-          {/* Trust indicators */}
-          <div className="hero-reveal reveal flex items-center gap-6 pt-4">
-            <div className="flex items-center gap-2 text-white/40 text-sm">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              FERC 2222 Compliant
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          {/* Left Column: Editorial Value Proposition */}
+          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pine-surface/70 border border-lime/25 text-lime text-xs font-semibold uppercase tracking-wider">
+              <Zap size={13} className="animate-pulse" aria-hidden="true" />
+              <span>Clean-Tech &amp; DERMS Advisory &bull; New York</span>
             </div>
-            <div className="w-px h-4 bg-white/20" />
-            <div className="text-white/40 text-sm">20+ Years Experience</div>
-            <div className="w-px h-4 bg-white/20 hidden sm:block" />
-            <div className="text-white/40 text-sm hidden sm:block">New York, NY</div>
-          </div>
-        </div>
 
-        {/* Right — Energy grid visualization */}
-        <div className="hero-reveal reveal hidden md:block">
-          <div className="relative">
-            <div className="absolute -inset-4 bg-gradient-to-r from-gold/5 to-forest/5 rounded-3xl blur-3xl" />
-            <div className="relative bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-3 h-3 rounded-full bg-red-400/60" />
-                <div className="w-3 h-3 rounded-full bg-yellow-400/60" />
-                <div className="w-3 h-3 rounded-full bg-green-400/60" />
-                <span className="text-white/30 text-xs ml-2 font-mono">
-                  grid-topology.view
-                </span>
+            <h1 className="font-heading font-bold text-3xl sm:text-5xl lg:text-6xl tracking-tight text-sand leading-[1.08]">
+              A smarter grid starts with{" "}
+              <span className="text-lime underline decoration-lime/40 decoration-wavy decoration-1 underline-offset-8">
+                clearer thinking.
+              </span>
+            </h1>
+
+            <p className="text-base sm:text-lg lg:text-xl text-sand/75 max-w-2xl font-normal leading-relaxed">
+              PandGroup is an independent energy consultancy guiding utilities, municipal stakeholders,
+              and clean-tech innovators through the architecture of Distributed Energy Resource Management Systems (DERMS),
+              microgrid engineering, and regulatory grid transformation.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 bg-lime hover:bg-lime-hover text-pine font-heading font-bold text-sm tracking-wide uppercase px-7 py-4 rounded-full transition-all duration-200 shadow-lg hover:shadow-lime/25 min-h-[48px]"
+              >
+                <span>Request Advisory Consultation</span>
+                <ArrowUpRight size={17} aria-hidden="true" />
+              </a>
+
+              <a
+                href="#services"
+                className="inline-flex items-center justify-center gap-2 bg-transparent hover:bg-pine-surface/60 text-sand border border-sand/20 hover:border-lime/40 text-sm font-medium px-6 py-4 rounded-full transition-all duration-200 min-h-[48px]"
+              >
+                <span>Explore Core Capabilities</span>
+              </a>
+            </div>
+
+            {/* Factual trust elements (no fabricated metrics) */}
+            <div className="pt-6 border-t border-white/10 flex flex-wrap items-center gap-x-8 gap-y-3 text-xs text-sand/65">
+              <div className="flex items-center gap-2">
+                <ShieldCheck size={16} className="text-lime" aria-hidden="true" />
+                <span>FERC Order 2222 Architecture</span>
               </div>
-              <EnergyGridSVG />
+              <div className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-lime" aria-hidden="true" />
+                <span>CIM Standards (IEC 61968)</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-lime" aria-hidden="true" />
+                <span>NYC CLCPA Alignment</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Hero Visual Showcase using original PandGroup photography */}
+          <div className="lg:col-span-5 relative">
+            <div className="relative mx-auto max-w-md lg:max-w-none">
+              {/* Asymmetrical frame styling */}
+              <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-pine-surface/40">
+                <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full">
+                  <Image
+                    src="/images/Rectangle-19.png"
+                    alt="Electrical grid distribution systems and clean energy integration"
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 500px"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-pine via-transparent to-transparent opacity-80" />
+                </div>
+
+                {/* Overlaid caption card */}
+                <div className="p-6 bg-pine-deep/90 backdrop-blur-md border-t border-white/10 space-y-2">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-lime font-mono uppercase tracking-wider font-semibold">
+                      Grid Architecture Focus
+                    </span>
+                    <span className="text-sand/50 font-mono">NY-METRO</span>
+                  </div>
+                  <p className="text-sm text-sand/85 font-medium leading-snug">
+                    Bridging utility distribution constraints with flexible DER dispatch, battery storage, and microgrid controls.
+                  </p>
+                </div>
+              </div>
+
+              {/* Decorative secondary badge */}
+              <div className="hidden sm:block absolute -bottom-5 -left-5 bg-sand text-pine p-4 rounded-2xl shadow-xl border border-pine-surface/30 max-w-[210px]">
+                <div className="text-[11px] font-heading font-bold uppercase tracking-wider text-sage-dark mb-1">
+                  Strategic Scope
+                </div>
+                <div className="text-xs font-semibold text-pine leading-tight">
+                  Tailor-Made DERMS &amp; DRMS Advisory
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <a
-        href="#metrics"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/30 hover:text-gold transition-colors animate-bounce"
-      >
-        <ChevronDown size={28} />
-      </a>
     </section>
   );
 }
-
