@@ -31,7 +31,8 @@ export const metadata: Metadata = {
     follow: false,
   },
   icons: {
-    icon: "/images/pandgroup-logo-light.png",
+    icon: "/images/pandgroup-mark.png",
+    apple: "/images/pandgroup-mark.png",
   },
   openGraph: {
     title: "PandGroup — A Smarter Grid Starts with Clearer Thinking",

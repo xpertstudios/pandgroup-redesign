@@ -57,19 +57,17 @@ export default function Navbar() {
           {/* Logo with transparent light background asset */}
           <Link
             href="/"
-            className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-sky rounded-md"
+            className="flex items-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-sky rounded-md"
             aria-label="PandGroup — Return to homepage"
           >
-            <div className="relative w-36 sm:w-44 h-10 sm:h-12">
-              <Image
-                src="/images/pandgroup-logo-light.png"
-                alt="PandGroup Energy Advisory"
-                fill
-                priority
-                sizes="(max-width: 640px) 144px, 176px"
-                className="object-contain object-left group-hover:opacity-90 transition-opacity"
-              />
-            </div>
+            <Image
+              src="/images/pandgroup-logo-light.png"
+              alt="PandGroup Energy Advisory"
+              width={532}
+              height={251}
+              priority
+              className="h-10 sm:h-11 md:h-12 w-auto object-contain group-hover:opacity-90 transition-opacity"
+            />
           </Link>
 
           {/* Desktop Navigation */}

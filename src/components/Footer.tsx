@@ -10,13 +10,17 @@ export default function Footer() {
           {/* Brand & Overview */}
           <div className="lg:col-span-5 space-y-4">
             {/* Transparent dark-variant logo with original purple/blue icon and white text */}
-            <Link href="/" className="inline-block relative w-48 h-12">
+            <Link
+              href="/"
+              className="inline-block group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-sky rounded-md"
+              aria-label="PandGroup — Return to homepage"
+            >
               <Image
                 src="/images/pandgroup-logo-dark.png"
                 alt="PandGroup Energy Advisory"
-                fill
-                sizes="192px"
-                className="object-contain object-left"
+                width={532}
+                height={251}
+                className="h-11 sm:h-12 w-auto object-contain group-hover:opacity-90 transition-opacity"
               />
             </Link>
             <p className="text-sm text-brand-offwhite/75 max-w-sm leading-relaxed">
