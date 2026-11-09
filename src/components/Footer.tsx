@@ -1,109 +1,118 @@
+import Link from "next/link";
 import Image from "next/image";
-import { ArrowUp, Phone, Mail, MapPin } from "lucide-react";
+import { ArrowUp, Phone, Mail, MapPin, Clock } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-pine-deep text-sand border-t border-pine-surface/80 pt-16 pb-12">
+    <footer className="bg-brand-dark text-white border-t border-brand-gray/20 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-16 border-b border-pine-surface/60">
-          {/* Col 1: Brand & Narrative */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-16 border-b border-white/10">
+          {/* Brand & Overview */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="relative w-44 h-11">
+            <Link href="/" className="inline-block relative w-48 h-12">
               <Image
                 src="/images/Pandgroup-Logo-1.webp"
                 alt="PandGroup"
                 fill
-                sizes="176px"
-                className="object-contain object-left"
+                sizes="192px"
+                className="object-contain object-left brightness-0 invert"
               />
-            </div>
-            <p className="text-xs sm:text-sm text-sand/70 max-w-sm leading-relaxed">
-              PandGroup is an independent energy consultancy guiding utilities, municipal stakeholders,
-              and clean-tech innovators through DERMS architecture, demand response, and regulatory modernization.
+            </Link>
+            <p className="text-sm text-brand-gray/80 max-w-sm leading-relaxed">
+              Pandgroup specializes in crafting tailor-made DERMS solutions designed to optimize grid stability, enhance energy reliability, and facilitate the integration of renewable energy resources.
             </p>
-            <div className="pt-2 flex items-center gap-3 text-xs text-sage-light">
-              <span className="w-2 h-2 rounded-full bg-lime" aria-hidden="true" />
-              <span>Independent Clean Energy Advisory &bull; New York</span>
+            <div className="pt-2">
+              <Link
+                href="/derms-ebook"
+                className="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-wider text-brand-gold hover:text-brand-gold/80 transition-colors"
+              >
+                <span>&rarr; Download Free DERMS Whitepaper</span>
+              </Link>
             </div>
           </div>
 
-          {/* Col 2: Navigation */}
+          {/* Site Navigation */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="font-heading font-bold text-xs uppercase tracking-widest text-lime">
-              Core Capabilities
+            <h4 className="font-heading font-bold text-xs uppercase tracking-widest text-brand-sky">
+              Navigation
             </h4>
-            <ul className="space-y-2 text-xs sm:text-sm text-sand/75">
+            <ul className="space-y-2.5 text-sm text-brand-gray/80">
               <li>
-                <a href="#services" className="hover:text-lime transition-colors">
-                  DERMS &amp; DRMS Architecture
-                </a>
+                <Link href="/" className="hover:text-brand-sky transition-colors">
+                  Home
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-lime transition-colors">
-                  Strategic Build vs. Buy Advisement
-                </a>
+                <Link href="/about-us" className="hover:text-brand-sky transition-colors">
+                  About Us
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-lime transition-colors">
-                  Microgrid &amp; BESS Feasibility
-                </a>
+                <Link href="/our-projects" className="hover:text-brand-sky transition-colors">
+                  Our Projects
+                </Link>
               </li>
               <li>
-                <a href="#methodology" className="hover:text-lime transition-colors">
-                  IEC CIM 61968 System Integration
-                </a>
+                <Link href="/blog" className="hover:text-brand-sky transition-colors">
+                  Our Blog
+                </Link>
               </li>
               <li>
-                <a href="#methodology" className="hover:text-lime transition-colors">
-                  FERC Order 2222 Compliance
-                </a>
+                <Link href="/derms-ebook" className="hover:text-brand-sky transition-colors">
+                  DERMS E-Book
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact-us" className="hover:text-brand-sky transition-colors">
+                  Contact Us
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* Col 3: Direct Contacts */}
-          <div className="lg:col-span-4 space-y-3">
-            <h4 className="font-heading font-bold text-xs uppercase tracking-widest text-lime">
-              Practice Headquarters
+          {/* Contact Details from actual PandGroup site */}
+          <div className="lg:col-span-4 space-y-4">
+            <h4 className="font-heading font-bold text-xs uppercase tracking-widest text-brand-sky">
+              Headquarters
             </h4>
-            <address className="not-italic text-xs sm:text-sm text-sand/75 space-y-2.5">
-              <div className="flex items-start gap-2.5">
-                <MapPin size={15} className="text-lime shrink-0 mt-0.5" aria-hidden="true" />
+            <div className="space-y-3 text-sm text-brand-gray/80">
+              <div className="flex items-start gap-3">
+                <MapPin size={17} className="text-brand-sky shrink-0 mt-0.5" />
                 <span>
                   90 Vermilyea Ave, Suite 251<br />
                   New York, NY 10034-9998
                 </span>
               </div>
-              <div className="flex items-center gap-2.5">
-                <Mail size={15} className="text-lime shrink-0" aria-hidden="true" />
+              <div className="flex items-center gap-3">
+                <Mail size={17} className="text-brand-sky shrink-0" />
                 <a
                   href="mailto:D.Stephens@pandgroup.com"
-                  className="hover:text-lime transition-colors"
+                  className="hover:text-brand-sky transition-colors text-brand-sky font-medium"
                 >
                   D.Stephens@pandgroup.com
                 </a>
               </div>
-              <div className="flex items-center gap-2.5">
-                <Phone size={15} className="text-lime shrink-0" aria-hidden="true" />
+              <div className="flex items-center gap-3">
+                <Phone size={17} className="text-brand-sky shrink-0" />
                 <a
                   href="tel:347-450-3798"
-                  className="hover:text-lime transition-colors"
+                  className="hover:text-brand-sky transition-colors font-medium"
                 >
-                  (347) 450-3798
+                  347-450-3798
                 </a>
               </div>
-            </address>
-
-            <div className="pt-2 text-[11px] text-sand/50">
-              Hours: Mon – Sat: 9:00 AM – 6:00 PM EST
+              <div className="flex items-center gap-3">
+                <Clock size={17} className="text-brand-sky shrink-0" />
+                <span>Mon – Sat: 9:00 AM – 6:00 PM EST</span>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Sub-footer */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-sand/60">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-gray/60">
           <p>
-            &copy; 2026 PandGroup LLC. All rights reserved. Proposed Next.js redesign for pandgroup.com.
+            Copyright &copy; 2026 PandGroup LLC. All rights reserved.
           </p>
 
           <div className="flex items-center gap-6">
@@ -111,13 +120,13 @@ export default function Footer() {
               href="https://pandgroup.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-lime transition-colors"
+              className="hover:text-brand-sky transition-colors"
             >
-              Current Live Site (pandgroup.com)
+              Original WordPress Site (pandgroup.com)
             </a>
             <a
               href="#"
-              className="inline-flex items-center gap-1.5 hover:text-lime transition-colors min-h-[44px]"
+              className="inline-flex items-center gap-1.5 hover:text-brand-sky transition-colors min-h-[44px]"
               aria-label="Back to top"
             >
               <span>Back to Top</span>
