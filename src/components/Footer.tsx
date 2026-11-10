@@ -17,10 +17,10 @@ export default function Footer() {
             >
               <Image
                 src="/images/pandgroup-logo-dark.png"
-                alt="PandGroup Energy Advisory"
-                width={532}
-                height={251}
-                className="h-11 sm:h-12 w-auto object-contain group-hover:opacity-90 transition-opacity"
+                alt="PandGroup Distributed Energy Advisory"
+                width={595}
+                height={154}
+                className="w-[185px] sm:w-[215px] h-auto object-contain group-hover:opacity-90 transition-opacity"
               />
             </Link>
             <p className="text-sm text-brand-offwhite/75 max-w-sm leading-relaxed">

@@ -98,9 +98,10 @@ export default function DermsEbookPage() {
                 </div>
 
                 <a
-                  href="https://pandgroup.com/wp-content/uploads/2024/12/DERMS_EBOOK.pdf"
+                  href="/documents/DERMS_EBOOK.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
+                  download="PandGroup-DERMS-Guide.pdf"
                   className="w-full inline-flex items-center justify-center gap-2 bg-brand-sky hover:bg-brand-skyhover text-white font-heading font-bold text-xs uppercase tracking-wider py-4 px-6 rounded-md transition-all shadow-md min-h-[48px]"
                 >
                   <Download size={16} />

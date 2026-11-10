@@ -16,15 +16,15 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-14 items-center">
             {/* Left Content Column */}
-            <div className="lg:col-span-7 space-y-6 sm:space-y-7">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-sky/15 border border-brand-sky/30 text-brand-sky text-xs font-heading font-semibold uppercase tracking-wider">
-                <Zap size={13} aria-hidden="true" />
-                <span>DERMS &bull; Microgrids &bull; Virtual Power Plants</span>
+            <div className="lg:col-span-7 space-y-5 sm:space-y-7">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-brand-sky/15 border border-brand-sky/30 text-brand-sky text-[11px] sm:text-xs font-heading font-semibold uppercase tracking-wider max-w-full">
+                <Zap size={13} aria-hidden="true" className="shrink-0" />
+                <span className="truncate sm:whitespace-normal">DERMS &bull; Microgrids &bull; Virtual Power Plants</span>
               </div>
 
-              <h1 className="font-heading font-bold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.12] text-white">
+              <h1 className="font-heading font-bold text-2xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.15] text-white">
                 A smarter grid starts with{" "}
-                <span className="text-brand-sky">clearer thinking.</span>
+                <span className="text-brand-sky inline-block">clearer thinking.</span>
               </h1>
 
               <p className="text-base sm:text-lg text-brand-offwhite/85 max-w-2xl font-normal leading-relaxed">
